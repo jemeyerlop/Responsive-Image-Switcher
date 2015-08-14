@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
+	<title>Responsive Image Switcher</title>
+	<link rel="stylesheet" href="css/responsiveImageSwitcher.min.css">
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/responsiveImageSwitcher.min.js"></script>
+	<script>
+		//Decide the minimal device pixel ratio that is expected for the load of a higher resolution image
+		var dprExpectedForHigherResolutionImage=2;
+		$(document).ready(function(){
+			//If no arguments are passed, default value is 2
+			imageSwitcher(dprExpectedForHigherResolutionImage);
+		});
+	</script>
+</head>
+<body>
+	<figure class="imageContainerRIS" data-xs="240" data-sm="480" data-md="720">
+		<img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="cabin" data-path='img/landscape1' data-format='jpg' class="imageRIS">
+	</figure>		
+	<figure class="imageContainerRIS" data-xs="240" data-sm="480" data-md="720">
+		<img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="dock" data-path='img/landscape2' data-format='jpg' class="imageRIS">
+	</figure>
+	<figure class="imageContainerRIS" data-xs="240" data-sm="480" data-md="720">
+		<img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="lake" data-path='img/landscape3' data-format='jpg' class="imageRIS">
+	</figure>
+	<figure class="imageContainerRIS" data-xs="240" data-sm="480" data-md="720">
+		<img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="mountains" data-path='img/landscape4' data-format='jpg' class="imageRIS">
+	</figure>		
+	<figure class="imageContainerRIS" data-xs="240" data-sm="480" data-md="720">
+		<img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="shore" data-path='img/landscape5' data-format='jpg' class="imageRIS">
+	</figure>
+	<figure class="imageContainerRIS" data-xs="240" data-sm="480" data-md="720">
+		<img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="tree" data-path='img/landscape6' data-format='jpg' class="imageRIS">
+	</figure>	
+</body>
+</html>
