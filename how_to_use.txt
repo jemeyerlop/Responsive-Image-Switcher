@@ -1,0 +1,29 @@
+Responsive Image Switcher
+Author: Juan Enrique Meyer, 2015
+License: MIT
+https://github.com/jemeyerlop/responsive-image-switcher
+
+Purpose:
+
+RIS allows to switch between four different sizes of the same image (or different images if you want to) depending on the width of the element that contains the image and the device pixel ratio.
+
+It allows to configure for each image an own file path, format and set of sizes, by the use of HTML 'data' attributes. In addition, passing a numerical value to the function 'imageSwitcher()' allows to establish the minimal device pixel ratio that is expected for the load of a higher resolution image (if no argument is passed to the 'imageSwitcher()' function, the default minimal device pixel ratio value will be 2).
+
+Instructions and functioning:
+
+In your image folder make ready four sizes of each image that you want to use (prepare always the four size versions to be sure that you are supporting all the possible cases, considering that the device in which you are working will not necessarily load the same image sizes that can be loaded in other devices as they can have a different device pixel ratio). Each size must have a suffix ('lg','md','sm' or 'xs') after a hyphen like the following example: landscape-lg.jpg (large image 960px*640px), landscape-md.jpg (medium image 720px*480px), landscape-sm.jpg (small image 480px*320px) and landscape-xs.jpg (extra small image 240px*160px).
+
+In the HTML code give to the data-xs, data-sm and data-md of each image container (the elements with class 'imageContainerRIS') the value from which you want to switch to that image size (the size represented by the 'data' attribute suffix). Values must respect the order from the smallest ('data-xs') to the biggest (data-md). You don't have to set something like a "data-lg" value, because the larger image is loaded automatically instead of the smaller ones if the container width is wider than the 'md' option.
+
+For example, if you set the data attributes like this: data-xs="240", data-sm="480" and data-md="720", the 'imageSwitcher()' function will load the images according to the following options:
+
+	a)landscape-xs.jpg image if the container is <= 240px wide
+	b)landscape-sm.jpg image if the container is between 241px and 480px wide
+	c)landscape-md.jpg image if the container is between 481px and 720px wide
+	d)landscape-lg.jpg image if the container is >= 721px wide
+
+You can also set a value to establish the minimal device pixel ratio that is expected for the load of a higher resolution image by passing a numerical value to the function 'imageSwitcher()'. For example, if you write the function like this: 'imageSwitcher(1.5)' and the device in which the page is loaded has a device pixel ratio of 1.5 or higher, the function will load the 'sm' image instead of the 'xs' one, the 'md' one instead of the 'sm' one, and, at last, the 'lg' one instead of the 'md' one.
+
+You also have to set the 'data-format' and 'data-path' for each of the image containers. For example, if your images (landscape-lg.jpg, landscape-md.jpg, landscape-sm.jpg and landscape-xs.jpg) are stored in the folder 'img', set the data attributes as 'data-path="img/landscape"' and 'data-format="jpg"'. Notice that the value "img/landscape" of the 'data-path' lacks the hyphen, any of the suffixes ('lg','md','sm' or 'xs') and the format ('.jpg'). The reason is that those parts of the string that conforms the real path to the image will be written dynamically after the script determines which image to load depending on the container width and the device pixel ratio.
+
+Finally, there is a 'src' attribute containing the value 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' in each image tag that is inside an image container. That value is an ultra light data URI embedded image that avoids making unnecessary requests to the server. You can read more about this topic on http://stackoverflow.com/questions/5775469/whats-the-valid-way-to-include-an-image-with-no-src. When the 'imageSwitcher()' function determines which size of the image is needed according to the container width and the device pixel ratio, it replaces that data URI value with the dynamically generated path to the proper image and so the real image is loaded.
